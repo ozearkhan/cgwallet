@@ -6,6 +6,7 @@ import { SubHeading } from "../components/SubHeading";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import {API_BASE_URL} from "../../apiConfig.js";
 
 export const Signin = () => {
     const [email, setEmail] = useState("");
@@ -18,7 +19,7 @@ export const Signin = () => {
         setLoading(true);
         setError("");
         try {
-            const response = await axios.post("http://localhost:3000/api/v1/user/signin", {
+            const response = await axios.post(`${API_BASE_URL}/api/v1/user/signin`, {
                 username: email,
                 password: password,
             });

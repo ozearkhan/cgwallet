@@ -3,6 +3,7 @@ import { Button } from "./Button";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import debounce from 'lodash/debounce';
+import {API_BASE_URL} from "../../apiConfig.js";
 
 export const Users = () => {
     const [users, setUsers] = useState([]);
@@ -13,7 +14,7 @@ export const Users = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/api/v1/user/bulk?filter=${filter}&page=${page}`, {
+                const response = await axios.get(`${API_BASE_URL}/api/v1/user/bulk?filter=${filter}&page=${page}`, {
                     headers: {
                         "Authorization": "Bearer " + localStorage.getItem("token")
                     }

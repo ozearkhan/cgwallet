@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import Card from "./Card.jsx";
+import {API_BASE_URL} from "../../apiConfig.js";
 
 export const Balance = () => {
     const [balance, setBalance] = useState(0);
     useEffect(()=>{
-        axios.get("http://localhost:3000/api/v1/account/balance",{
+        axios.get(`${API_BASE_URL}/api/v1/account/balance`,{
             headers:{
                 Authorization: "Bearer " + localStorage.getItem("token")
             }

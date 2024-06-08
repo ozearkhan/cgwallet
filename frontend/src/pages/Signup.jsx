@@ -6,6 +6,7 @@ import { SubHeading } from "../components/SubHeading";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import {API_BASE_URL} from "../../apiConfig.js";
 
 export const Signup = () => {
     const [firstName, setFirstName] = useState("");
@@ -20,7 +21,7 @@ export const Signup = () => {
         setLoading(true);
         setError("");
         try {
-            const response = await axios.post("http://localhost:3000/api/v1/user/signup", {
+            const response = await axios.post(`${API_BASE_URL}/api/v1/user/signup`, {
                 username: email,
                 firstName: firstName,
                 lastName: lastName,

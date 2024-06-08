@@ -5,12 +5,13 @@ import axios from 'axios';
 import { Appbar } from "../components/Appbar";
 import { Balance } from "../components/Balance";
 import {Users}  from "../components/Users";
+import {API_BASE_URL} from "../../apiConfig.js";
 
 function LandingPage() {
     const [topSenders, setTopSenders] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:3000/api/v1/user/top-senders", {
+        axios.get(`${API_BASE_URL}/api/v1/user/top-senders`, {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem("token")
             }
